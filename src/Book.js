@@ -3,9 +3,18 @@ import PropTypes from "prop-types";
 
 class Book extends Component {
   render() {
-    const { book } = this.props;
+    const { book, booksOnShelf } = this.props;
     // console.log("===: " + book.imageLinks.thumbnail);
     // const imageUrl = book && book.imageLinks && book.imageLinks.thumbnail;
+    if (booksOnShelf) {
+      for (let idx = 0; idx < booksOnShelf.length; idx++) {
+        const currentBook = booksOnShelf[idx];
+        if (currentBook.id === book.id && !book.hasOwnProperty("shelf")) {
+          book.shelf = currentBook.shelf;
+          break;
+        }
+      }
+    }
     return (
       <div className="book">
         <div className="book-top">
@@ -20,7 +29,12 @@ class Book extends Component {
             }}
           />
           <div className="book-shelf-changer">
-            <select>
+            <select
+              onChange={event =>
+                this.props.updateBookShelf(book, event.target.value)
+              }
+              value={book.hasOwnProperty("shelf") ? book.shelf : "none"}
+            >
               <option value="move" disabled>
                 Move to...
               </option>

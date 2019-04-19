@@ -5,13 +5,15 @@ import Book from "./Book";
 
 class ListBooks extends Component {
   render() {
-    const currentlyReadingBooks = this.props.books.filter(
+    const currentlyReadingBooks = this.props.booksOnShelf.filter(
       book => book.shelf === "currentlyReading"
     );
-    const wantToReadBooks = this.props.books.filter(
+    const wantToReadBooks = this.props.booksOnShelf.filter(
       book => book.shelf === "wantToRead"
     );
-    const readBooks = this.props.books.filter(book => book.shelf === "read");
+    const readBooks = this.props.booksOnShelf.filter(
+      book => book.shelf === "read"
+    );
 
     return (
       <div className="list-books">
@@ -26,7 +28,10 @@ class ListBooks extends Component {
                 <ol className="books-grid">
                   {currentlyReadingBooks.map(book => (
                     <li key={book.id}>
-                      <Book book={book} />
+                      <Book
+                        book={book}
+                        updateBookShelf={this.props.updateBookShelf}
+                      />
                     </li>
                   ))}
                 </ol>
@@ -38,7 +43,10 @@ class ListBooks extends Component {
                 <ol className="books-grid">
                   {wantToReadBooks.map(book => (
                     <li key={book.id}>
-                      <Book book={book} />
+                      <Book
+                        book={book}
+                        updateBookShelf={this.props.updateBookShelf}
+                      />
                     </li>
                   ))}
                 </ol>
@@ -50,7 +58,10 @@ class ListBooks extends Component {
                 <ol className="books-grid">
                   {readBooks.map(book => (
                     <li key={book.id}>
-                      <Book book={book} />
+                      <Book
+                        book={book}
+                        updateBookShelf={this.props.updateBookShelf}
+                      />
                     </li>
                   ))}{" "}
                 </ol>
@@ -67,7 +78,7 @@ class ListBooks extends Component {
 }
 
 ListBooks.propTypes = {
-  books: PropTypes.array.isRequired
+  booksOnShelf: PropTypes.array.isRequired
 };
 
 export default ListBooks;
