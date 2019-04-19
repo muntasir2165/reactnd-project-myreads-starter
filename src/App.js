@@ -12,17 +12,6 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     this.getAllBooks();
-    // BooksAPI.getAll()
-    //   .then(books => {
-    //     this.setState(() => ({
-    //       books
-    //     }));
-    //   })
-    //   .then(() => {
-    //     BooksAPI.update(this.state.books[0], "currentlyReading").then(res =>
-    //       console.log("data: " + JSON.stringify(res))
-    //     );
-    //   });
   }
 
   getAllBooks = () => {
@@ -35,7 +24,6 @@ class BooksApp extends React.Component {
 
   updateBookShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(res => {
-      // console.log("book update shelf to " + shelf + ": " + JSON.stringify(res));
       this.getAllBooks();
     });
   };
@@ -43,9 +31,6 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        {/* {JSON.stringify(this.state.books)} */}
-        {/* <hr /> */}
-        {/* {this.state.books[0] && JSON.stringify(this.state.books[0].shelf)} */}
         <Route
           exact
           path="/"
