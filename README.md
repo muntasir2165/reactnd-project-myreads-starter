@@ -4,6 +4,8 @@ This is the finished app for the final assessment project for Udacity's React Fu
 
 The app utilizes React and associated fundamental concepts in the framework to design and develop the front-end. The app makes use of class- and function-based React components, react-router and state management by storing data in the components' closest common ancestor (in this case, the App component).
 
+[App Link](https://muntasir2165.github.io/reactnd-project-myreads-starter/)
+
 ## Getting Started
 
 1. Either download the zipped project from GitHub or clone the repo into your local machine.
