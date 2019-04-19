@@ -2,7 +2,9 @@
   "name": "myreads-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://muntasir2165.github.io/reactnd-project-myreads-starter",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -13,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
