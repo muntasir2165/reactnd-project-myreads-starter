@@ -1,4 +1,4 @@
-# MyReads: A Book Lending App
+# MyReads: A Book Tracking App
 
 This is the finished app for the final assessment project for Udacity's React Fundamentals course.
 
