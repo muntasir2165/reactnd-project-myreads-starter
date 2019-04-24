@@ -17,7 +17,10 @@ class SearchBooks extends Component {
     searchTerm !== "" &&
       BooksAPI.search(searchTerm)
         .then(books => {
-          if (Array.isArray(books)) {
+          /*
+          The (searchTerm === this.state.searchTerm) check is to make sure that we update searchBookResults with the data returned from the asyn request for the latest search query the user typed into the search bar and not update searchBookResults with data returned from older async requests for older searchTerms
+          */
+          if (searchTerm === this.state.searchTerm && Array.isArray(books)) {
             this.setState(() => ({
               searchBookResults: [...books]
             }));
