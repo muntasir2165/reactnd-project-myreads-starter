@@ -2,7 +2,7 @@ import React from "react";
 import * as BooksAPI from "./BooksAPI";
 import ListBooks from "./ListBooks";
 import SearchBooks from "./SearchBooks";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 
 class BooksApp extends React.Component {
@@ -31,32 +31,34 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route
-          exact
-          path="/"
-          render={({ history }) => (
-            <ListBooks
-              booksOnShelf={this.state.books}
-              updateBookShelf={this.updateBookShelf}
-              onBookAdd={() => {
-                history.push("/search");
-              }}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/search"
-          render={({ history }) => (
-            <SearchBooks
-              booksOnShelf={this.state.books}
-              updateBookShelf={this.updateBookShelf}
-              onBackButtonPress={() => {
-                history.push("/");
-              }}
-            />
-          )}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={({ history }) => (
+              <ListBooks
+                booksOnShelf={this.state.books}
+                updateBookShelf={this.updateBookShelf}
+                onBookAdd={() => {
+                  history.push("/search");
+                }}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/search"
+            render={({ history }) => (
+              <SearchBooks
+                booksOnShelf={this.state.books}
+                updateBookShelf={this.updateBookShelf}
+                onBackButtonPress={() => {
+                  history.push("/");
+                }}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
